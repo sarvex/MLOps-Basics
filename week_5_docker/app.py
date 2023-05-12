@@ -11,5 +11,4 @@ async def home_page():
 
 @app.get("/predict")
 async def get_prediction(text: str):
-    result =  predictor.predict(text)
-    return result
+    return predictor.predict(text)

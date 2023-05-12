@@ -19,8 +19,7 @@ class ColaModel(pl.LightningModule):
         outputs = self.bert(input_ids=input_ids, attention_mask=attention_mask)
 
         h_cls = outputs.last_hidden_state[:, 0]
-        logits = self.W(h_cls)
-        return logits
+        return self.W(h_cls)
 
     def training_step(self, batch, batch_idx):
         logits = self.forward(batch["input_ids"], batch["attention_mask"])

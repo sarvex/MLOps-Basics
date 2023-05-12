@@ -34,10 +34,9 @@ class ColaModel(pl.LightningModule):
         self.recall_micro_metric = torchmetrics.Recall(average="micro")
 
     def forward(self, input_ids, attention_mask, labels=None):
-        outputs = self.bert(
+        return self.bert(
             input_ids=input_ids, attention_mask=attention_mask, labels=labels
         )
-        return outputs
 
     def training_step(self, batch, batch_idx):
         outputs = self.forward(

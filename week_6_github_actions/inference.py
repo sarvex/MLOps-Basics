@@ -23,10 +23,10 @@ class ColaPredictor:
             torch.tensor([processed["attention_mask"]]),
         )
         scores = self.softmax(logits[0]).tolist()[0]
-        predictions = []
-        for score, label in zip(scores, self.lables):
-            predictions.append({"label": label, "score": score})
-        return predictions
+        return [
+            {"label": label, "score": score}
+            for score, label in zip(scores, self.lables)
+        ]
 
 
 if __name__ == "__main__":

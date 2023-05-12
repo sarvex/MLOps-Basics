@@ -24,14 +24,11 @@ class ColaONNXPredictor:
         ort_outs = self.ort_session.run(None, ort_inputs)
         scores = softmax(ort_outs[0])[0]
         max_score_id = np.argmax(scores)
-        prediction ={}
-        prediction['label'] = self.labels[max_score_id]
-        prediction['score'] = round(float(scores[max_score_id]), 2)
-
-        result = {}
-        result['text'] = text
-        result['prediction'] = prediction
-        return result
+        prediction = {
+            'label': self.labels[max_score_id],
+            'score': round(float(scores[max_score_id]), 2),
+        }
+        return {'text': text, 'prediction': prediction}
 
 
 if __name__ == "__main__":

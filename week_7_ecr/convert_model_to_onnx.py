@@ -29,7 +29,7 @@ def convert_model(cfg):
     }
 
     # Export the model
-    logger.info(f"Converting the model into ONNX format")
+    logger.info("Converting the model into ONNX format")
     torch.onnx.export(
         cola_model,  # model being run
         (

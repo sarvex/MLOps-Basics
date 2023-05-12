@@ -23,10 +23,10 @@ class ColaONNXPredictor:
         }
         ort_outs = self.ort_session.run(None, ort_inputs)
         scores = softmax(ort_outs[0])[0]
-        predictions = []
-        for score, label in zip(scores, self.lables):
-            predictions.append({"label": label, "score": score})
-        return predictions
+        return [
+            {"label": label, "score": score}
+            for score, label in zip(scores, self.lables)
+        ]
 
 
 if __name__ == "__main__":

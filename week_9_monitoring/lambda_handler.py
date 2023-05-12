@@ -2,6 +2,7 @@
 Lambda wrapper
 """
 
+
 import json
 import logging
 from inference_onnx import ColaONNXPredictor
@@ -10,7 +11,7 @@ logging.basicConfig()
 logger = logging.getLogger(__name__)
 logger.setLevel(level=logging.DEBUG)
 
-logger.info(f"Loading the model")
+logger.info("Loading the model")
 inferencing_instance = ColaONNXPredictor("./models/model.onnx")
 
 
